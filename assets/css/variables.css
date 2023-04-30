@@ -1,0 +1,25 @@
+:root {
+  --bg-color: #090a18;
+  --kb-bg-color: #3e47a9;
+  --kb-border-color: #353d91;
+
+  --bs-key-text-color: #4f5bda;
+  --bs-key-title-color: #eef0fe;
+  --bs-key-bg-color: #dee0fc;
+  --bs-key-shadow-color: #cdd1fb;
+
+  --bs-key-text-color-pressed: #3e47a9;
+  --bs-key-title-color-pressed: #cdd1fb;
+  --bs-key-bg-color-pressed: #bcc1fa;
+  --bs-key-shadow-color-pressed: #acb2f9;
+
+  --add-key-text-color: #eef0fe;
+  --add-key-title-color: #4f5bda;
+  --add-key-bg-color: #4651c2;
+  --add-key-shadow-color: #3e47a9;
+
+  --add-key-text-color-pressed: #cdd1fb;
+  --add-key-title-color-pressed: #3e47a9;
+  --add-key-bg-color-pressed: #353d91;
+  --add-key-shadow-color-pressed: #2c3379;
+}
