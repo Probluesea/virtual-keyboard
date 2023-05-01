@@ -222,3 +222,16 @@ html {
 .key.up .key__title {
   text-transform: capitalize;
 }
+
+.key.indicator .key__title::after {
+  content: "";
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  margin: 0.8rem;
+  z-index: 2;
+  background: var(--add-key-text-color);
+}
