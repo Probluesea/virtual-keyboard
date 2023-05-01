@@ -1,0 +1,237 @@
+html {
+  font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 4rem;
+  background: var(--bg-color);
+}
+
+.keyboard {
+  flex-basis: 150.8rem;
+  display: flex;
+  flex-direction: column;
+  border: 0.4rem solid var(--kb-border-color);
+  padding: 1.2rem;
+  border-radius: 2.4rem;
+  background: var(--kb-bg-color);
+  position: relative;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.keyboard__wrapper {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-color);
+  padding: 0.4rem;
+  gap: 0.4rem;
+  border-radius: 1.2rem;
+}
+
+.keyboard__textarea {
+  font-size: 2.4rem;
+  color: var(--bs-key-text-color);
+  outline: none;
+  background: var(--bs-key-title-color);
+  height: 8.8rem;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 1.4rem 2.2rem 3rem;
+  box-shadow: inset -1.6rem -1.6rem 0rem 1.6rem var(--bs-key-bg-color);
+  resize: none;
+}
+
+.keyboard__textarea::placeholder {
+  color: var(--bs-key-shadow-color);
+}
+
+.keyboard.keyboard--description.keyboard::after {
+  content: "Virtual keyboard only supports Windows";
+  position: absolute;
+  bottom: 0;
+  color: var(--bs-key-title-color);
+  font-size: 2.2rem;
+  bottom: -6rem;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.keyboard.keyboard--description.keyboard::before {
+  content: "Press and hold «Shift» and press «Alt» to change the language";
+  position: absolute;
+  bottom: 0;
+  color: var(--bs-key-title-color);
+  font-size: 2.4rem;
+  bottom: -10rem;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+  align-items: end;
+  gap: 0.4rem;
+  border-radius: 1.2rem;
+}
+
+.key {
+  flex: 0 0 8.8rem;
+  height: 8.8rem;
+  background: var(--bs-key-bg-color);
+  border: none;
+  border-radius: 0.8rem;
+  padding: 0.4rem 1.2rem 2rem;
+  cursor: pointer;
+  transition: all 0.1s;
+  position: relative;
+  overflow: hidden;
+}
+
+.key::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-bottom: 2.4rem solid var(--bs-key-shadow-color);
+  border-left: 1.6rem solid transparent;
+  border-right: 1.6rem solid transparent;
+  transition: all 0.1s;
+}
+
+.key__title {
+  color: var(--bs-key-text-color);
+  background: var(--bs-key-title-color);
+  border: 0.4rem solid var(--bs-key-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: lowercase;
+  font-weight: bold;
+  font-size: 2.4rem;
+  line-height: 100%;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.8rem;
+  position: relative;
+  transition: all 0.1s;
+  z-index: 1;
+  padding: 1rem;
+  gap: 1.2rem;
+}
+
+.key.active,
+.key:active {
+  background: var(--bs-key-bg-color-pressed);
+  padding: 0 0.4rem 0.8rem;
+  height: 7.2rem;
+  flex-basis: 7.2rem;
+  margin: 1.6rem 0.8rem 0;
+}
+.key.active,
+.key:hover,
+.key:focus {
+  outline: none;
+  background: var(--bs-key-bg-color-pressed);
+}
+
+.key.active .key__title,
+.key:active .key__title,
+.key:hover .key__title,
+.key:focus .key__title {
+  color: var(--bs-key-text-color-pressed);
+  background: var(--bs-key-title-color-pressed);
+  border-color: var(--bs-key-bg-color-pressed);
+}
+.key.active.key::before,
+.key:active.key::before,
+.key:hover.key::before,
+.key:focus.key::before {
+  border-bottom-color: var(--bs-key-shadow-color-pressed);
+}
+
+.key--add {
+  background: var(--add-key-bg-color);
+}
+.key--add .key__title {
+  text-transform: capitalize;
+  font-size: 2rem;
+  color: var(--add-key-text-color);
+  background: var(--add-key-title-color);
+  border-color: var(--add-key-bg-color);
+}
+.key--add::before {
+  border-bottom-color: var(--add-key-shadow-color);
+}
+
+.key--add.active,
+.key--add:hover,
+.key--add:focus,
+.key--add:active {
+  background: var(--add-key-bg-color-pressed);
+}
+.key--add.active .key__title,
+.key--add:hover .key__title,
+.key--add:focus .key__title,
+.key--add:active .key__title {
+  color: var(--add-key-text-color-pressed);
+  background: var(--add-key-shadow-color);
+  border-color: var(--add-key-bg-color-pressed);
+}
+.key--add.active.key--add:before,
+.key--add:hover.key--add:before,
+.key--add:focus.key--add:before,
+.key--add:active.key--add:before {
+  border-bottom-color: var(--add-key-shadow-color-pressed);
+}
+
+.key--stretch-sm {
+  flex: 1 0 8.8rem;
+}
+
+.key--stretch-md {
+  flex: 1.5 0 8.8rem;
+}
+
+.key--stretch-lg {
+  flex: 2 0 8.8rem;
+}
+
+.key--stretch-extra {
+  flex: 15 0 8.8rem;
+}
+
+.key.up .key__title {
+  text-transform: capitalize;
+}
+
+.key.indicator .key__title::after {
+  content: "";
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  margin: 0.8rem;
+  z-index: 2;
+  background: var(--add-key-text-color);
+}
