@@ -117,9 +117,9 @@ class Keyboard {
         for (const key of row) {
           if (code === key.code) {
             this.#handleCaps(code);
-            if (!e.shiftKey && !this.#Caps) textarea.value += key[`char${this.#lang}`];
-            if (e.shiftKey) textarea.value += key[`altChar${this.#lang}`];
-            if (this.#Caps) textarea.value += key[`altChar${this.#lang}`];
+            if (!e.shiftKey && !this.#Caps) textarea.value += key[`char${localStorage.lang}`];
+            if (e.shiftKey) textarea.value += key[`altChar${localStorage.lang}`];
+            if (this.#Caps) textarea.value += key[`altChar${localStorage.lang}`];
 
             if (e.code === "Backspace") {
               const start = textarea.selectionStart;
