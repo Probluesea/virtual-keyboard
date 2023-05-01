@@ -15,6 +15,8 @@ class Keyboard {
   #init() {
     this.#generateBasicLayout();
     this.#displayKeys();
+    this.#setLocalStorage();
+    this.#eventListeners();
   }
 
   #generateBasicLayout() {
@@ -67,6 +69,29 @@ class Keyboard {
 
       this.#keysContainerEl.append(rowEl);
     }
+  }
+
+  #changeLanguage(e) {
+    if (e.shiftKey && e.code === "AltLeft") {
+      if (this.#lang === "Eng") this.#lang = "Rus";
+      else this.#lang = "Eng";
+      localStorage.lang = this.#lang;
+      this.#displayKeys();
+    }
+  }
+
+  #setLocalStorage() {
+    if (!localStorage.lang) localStorage.lang = this.#lang;
+  }
+
+  #eventListeners() {
+    document.addEventListener("keydown", (e) => {
+      e.preventDefault();
+      this.#changeLanguage(e);
+    });
+    document.addEventListener("keyup", (e) => {
+      e.preventDefault();
+    });
   }
 }
 new Keyboard(keysArr);
