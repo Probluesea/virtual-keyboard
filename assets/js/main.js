@@ -17,6 +17,7 @@ class Keyboard {
     this.#displayKeys();
     this.#setLocalStorage();
     this.#eventListeners();
+    this.#inputTextarea();
   }
 
   #generateBasicLayout() {
@@ -89,6 +90,7 @@ class Keyboard {
       e.preventDefault();
       this.#animateKeys(e);
       this.#changeLanguage(e);
+      this.#inputTextarea(e);
     });
     document.addEventListener("keyup", (e) => {
       e.preventDefault();
@@ -101,6 +103,52 @@ class Keyboard {
 
     for (const key of keys) {
       if (e.code === key.dataset.code) key.classList[`${e.type === "keydown" ? "add" : "remove"}`]("active");
+    }
+  }
+
+  #inputTextarea(e) {
+    const textarea = this.#kbContainer.querySelector("#kbTextarea");
+    if (e) {
+      const { code } = e;
+      for (const row of this.#keysArr) {
+        for (const key of row) {
+          if (code === key.code) {
+            this.#handleCaps(code);
+            if (!e.shiftKey && !this.#Caps) textarea.value += key[`char${this.#lang}`];
+            if (e.shiftKey) textarea.value += key[`altChar${this.#lang}`];
+            if (this.#Caps) textarea.value += key[`altChar${this.#lang}`];
+
+            if (e.code === "Backspace") {
+              const start = textarea.selectionStart;
+              const end = textarea.selectionEnd;
+              const length = textarea.value.length;
+
+              textarea.value = textarea.value.substring(0, start - 1) + textarea.value.substring(end, length);
+              textarea.focus();
+              textarea.selectionStart = start - 1;
+              textarea.selectionEnd = start - 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #handleCaps(code) {
+    const keys = document.querySelectorAll(".key");
+
+    if (code === "CapsLock") {
+      if (!this.#Caps) {
+        for (const key of keys) {
+          if (code === key.dataset.code) key.classList.add("indicator");
+        }
+        this.#Caps = true;
+      } else {
+        for (const key of keys) {
+          if (code === key.dataset.code) key.classList.remove("indicator");
+        }
+        this.#Caps = false;
+      }
     }
   }
 }
