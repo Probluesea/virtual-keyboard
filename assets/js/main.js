@@ -96,6 +96,9 @@ class Keyboard {
       e.preventDefault();
       this.#animateKeys(e);
     });
+    document.addEventListener("click", (e) => {
+      this.#inputTextarea(e.target.closest(".key")?.dataset);
+    });
   }
 
   #animateKeys(e) {
