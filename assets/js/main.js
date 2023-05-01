@@ -1,17 +1,14 @@
-import keysArr from "./keys.js";
-import generateDOM from "./generateDOM.js";
-import animateKey from "./animateKey.js";
+import keysArr from "./keysArray.js";
 
-document.addEventListener("DOMContentLoaded", init);
+class Keyboard {
+  #lang = "Eng";
+  #keysArr;
+  #keysContainerEl;
+  #kbContainer;
+  #Caps = false;
 
-function init() {
-  generateDOM(keysArr);
-  const keys = document.querySelectorAll(".key");
-
-  document.addEventListener("keydown", (e) => {
-    animateKey(e, keys);
-  });
-  document.addEventListener("keyup", (e) => {
-    animateKey(e, keys);
-  });
+  constructor(keysArr) {
+    this.#keysArr = keysArr;
+  }
 }
+new Keyboard(keysArr);

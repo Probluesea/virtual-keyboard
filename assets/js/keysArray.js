@@ -350,7 +350,7 @@ const keys = [
     {
       code: "KeyV",
       charEng: "v",
-      charRus: "М",
+      charRus: "м",
       altCharEng: "V",
       altCharRus: "М",
     },
