@@ -87,11 +87,21 @@ class Keyboard {
   #eventListeners() {
     document.addEventListener("keydown", (e) => {
       e.preventDefault();
+      this.#animateKeys(e);
       this.#changeLanguage(e);
     });
     document.addEventListener("keyup", (e) => {
       e.preventDefault();
+      this.#animateKeys(e);
     });
+  }
+
+  #animateKeys(e) {
+    const keys = this.#kbContainer.querySelectorAll(".key");
+
+    for (const key of keys) {
+      if (e.code === key.dataset.code) key.classList[`${e.type === "keydown" ? "add" : "remove"}`]("active");
+    }
   }
 }
 new Keyboard(keysArr);
