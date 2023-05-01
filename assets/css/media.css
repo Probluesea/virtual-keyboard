@@ -1,0 +1,20 @@
+@media screen and (max-width: 94em) {
+  html {
+    font-size: 9px;
+  }
+}
+@media screen and (max-width: 84em) {
+  html {
+    font-size: 8px;
+  }
+}
+@media screen and (max-width: 75em) {
+  html {
+    font-size: 7px;
+  }
+}
+@media screen and (max-width: 66em) {
+  html {
+    font-size: 6px;
+  }
+}
